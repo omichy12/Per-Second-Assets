@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Per Second Assets - Every Asset You Need. Found in a Second.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0F0F14;
+            color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(15, 15, 20, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 24px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #24242E;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #4A7CFF, #5CFFD7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            color: #D3D3D9;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4A7CFF, #5CFFD7);
+            color: #0F0F14;
+            box-shadow: 0 4px 20px rgba(74, 124, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(74, 124, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #FFFFFF;
+            border: 2px solid #4A7CFF;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(74, 124, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(74, 124, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #4A7CFF, #5CFFD7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sub-headline {
+            font-size: 20px;
+            color: #D3D3D9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .hero-image {
+            margin-top: 60px;
+            background: #15151D;
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid #24242E;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .search-preview {
+            background: #0F0F14;
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #4A7CFF;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-icon {
+            color: #5CFFD7;
+            font-size: 24px;
+        }
+
+        .search-text {
+            color: #D3D3D9;
+            font-size: 18px;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: rgba(74, 124, 255, 0.1);
+            border: 1px solid #4A7CFF;
+            border-radius: 6px;
+            color: #7BA4FF;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+            border-top: 1px solid #24242E;
+        }
+
+        .section-bg {
+            background: #15151D;
+        }
+
+        h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .section-intro {
+            font-size: 18px;
+            color: #D3D3D9;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .problem-card {
+            background: #15151D;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid #24242E;
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-4px);
+            border-color: #4A7CFF;
+            box-shadow: 0 12px 40px rgba(74, 124, 255, 0.2);
+        }
+
+        .problem-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .problem-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: #FFFFFF;
+        }
+
+        .problem-card p {
+            color: #D3D3D9;
+            line-height: 1.7;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            background: linear-gradient(135deg, rgba(74, 124, 255, 0.1), rgba(92, 255, 215, 0.1));
+            padding: 40px;
+            border-radius: 16px;
+            border-left: 4px solid #5CFFD7;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-text {
+            font-size: 20px;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #FFFFFF;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            color: #7BA4FF;
+            font-weight: 600;
+        }
+
+        /* How It Works */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .step:nth-child(even) {
+            direction: rtl;
+        }
+
+        .step:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .step-content h3 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: #5CFFD7;
+        }
+
+        .step-content p {
+            font-size: 18px;
+            color: #D3D3D9;
+            line-height: 1.8;
+        }
+
+        .step-image {
+            background: #15151D;
+            border-radius: 12px;
+            padding: 40px;
+            border: 1px solid #24242E;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D3D3D9;
+            font-style: italic;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: #15151D;
+            padding: 36px;
+            border-radius: 12px;
+            border: 1px solid #24242E;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: #5CFFD7;
+            box-shadow: 0 12px 40px rgba(92, 255, 215, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: #FFFFFF;
+        }
+
+        .feature-card p {
+            color: #D3D3D9;
+            line-height: 1.7;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(74, 124, 255, 0.05), rgba(92, 255, 215, 0.05));
+            padding: 100px 40px;
+            border-radius: 24px;
+        }
+
+        .final-cta h2 {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        .final-cta .sub-headline {
+            margin-bottom: 40px;
+        }
+
+        .reassurance {
+            margin-top: 24px;
+            color: #7BA4FF;
+            font-size: 15px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #24242E;
+            color: #D3D3D9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 40px; }
+            h2 { font-size: 36px; }
+            .step { grid-template-columns: 1fr; }
+            .header-buttons { flex-direction: column; width: 100%; }
+            .btn { width: 100%; text-align: center; }
+            .hero { padding: 60px 0; }
+            section { padding: 60px 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <div class="logo">Per Second Assets</div>
+                    <div class="tagline">Every Asset You Need. Found in a Second.</div>
+                </div>
+                <div class="header-buttons">
+                    <a href="#" class="btn btn-primary">Start Searching Free</a>
+                    <a href="#" class="btn btn-secondary">Watch Demo</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Stop Searching. <span class="gradient-text">Start Creating.</span></h1>
+                <p class="sub-headline">
+                    Per Second Assets is the world's first intelligent search engine that finds and unifies every type of design asset from across the web—in one place. Get perfect PNGs, vectors, PSDs, and more, delivered in seconds.
+                </p>
+                <a href="#" class="btn btn-primary" style="font-size: 18px; padding: 16px 40px;">Find Your First Asset</a>
+                
+                <div class="hero-image">
+                    <div class="search-preview">
+                        <span class="search-icon">🔍</span>
+                        <span class="search-text">Search for any asset...</span>
+                    </div>
+                    <div class="filter-buttons">
+                        <span class="filter-btn">PNG</span>
+                        <span class="filter-btn">Vector</span>
+                        <span class="filter-btn">Photo</span>
+                        <span class="filter-btn">PSD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section-bg">
+        <div class="container">
+            <h2>The End of <span class="gradient-text">Tab Chaos</span></h2>
+            <p class="section-intro">
+                As a designer, your time is for creating, not hunting. You know the drill: 15 open tabs, jumping between a dozen sites, and still not finding the exact asset you need.
+            </p>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">⏰</div>
+                    <h3>Wasted Hours</h3>
+                    <p>Scouring free and premium sites one by one.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">❓</div>
+                    <h3>Inconsistent Quality</h3>
+                    <p>Never sure if you're getting the best version.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">😤</div>
+                    <h3>Format Frustration</h3>
+                    <p>Finding the right image, but not in PNG with a transparent background.</p>
+                </div>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">
+                    "I used to lose an hour a day just looking for assets. Per Second Assets gave me that time back. It's like having a super-powered design intern."
+                </p>
+                <p class="testimonial-author">— Alex C., UI/UX Designer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section>
+        <div class="container">
+            <h2>How It Works: <span class="gradient-text">Your Time, Saved.</span></h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-content">
+                        <h3>Step 1: ONE Unified Search</h3>
+                        <p>Describe what you need. Our AI understands "blue tech logo" or "transparent smartphone mockup."</p>
+                    </div>
+                    <div class="step-image">
+                        <p>Search bar showing: "transparent business card mockup"</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-content">
+                        <h3>Step 2: SMART Filters & Previews</h3>
+                        <p>Instantly filter results by type, color, orientation, and source. Hover to preview and see key info instantly.</p>
+                    </div>
+                    <div class="step-image">
+                        <p>Results grid with sidebar filters and hover preview</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-content">
+                        <h3>Step 3: DOWNLOAD & CREATE</h3>
+                        <p>One-click download or save to your project board. Get back to what you love—designing.</p>
+                    </div>
+                    <div class="step-image">
+                        <p>Project board with collected assets and Download All button</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section-bg">
+        <div class="container">
+            <h2>Built for Speed, <span class="gradient-text">Designed for You</span></h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>AI-Powered Search</h3>
+                    <p>Our engine understands design intent, not just keywords.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>On-Tool Editing</h3>
+                    <p>One-click background removal and color picking right in the browser.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Curated Collections</h3>
+                    <p>Browse hand-picked assets for popular projects like "Social Media Kits" or "Startup Pitches."</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Your Digital Workspace</h3>
+                    <p>Save and organize assets into project-specific boards. No more lost files.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section>
+        <div class="container">
+            <div class="final-cta">
+                <h2><span class="gradient-text">Reclaim Your Creative Time.</span></h2>
+                <p class="sub-headline">
+                    Join the thousands of designers who have stopped searching and started creating. Find your perfect asset in seconds.
+                </p>
+                <a href="#" class="btn btn-primary" style="font-size: 18px; padding: 16px 40px;">Get Started - It's Free</a>
+                <p class="reassurance">No credit card required. Explore thousands of free assets instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Per Second Assets. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
