@@ -401,6 +401,166 @@
             color: #D3D3D9;
         }
 
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: #15151D;
+            margin: 5% auto;
+            padding: 0;
+            border: 1px solid #4A7CFF;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(74, 124, 255, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 30px;
+            border-bottom: 1px solid #24242E;
+            position: relative;
+        }
+
+        .modal-header h3 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .modal-header p {
+            color: #D3D3D9;
+            font-size: 15px;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: #D3D3D9;
+            font-size: 32px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .close:hover {
+            color: #5CFFD7;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #D3D3D9;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            background: #0F0F14;
+            border: 2px solid #24242E;
+            border-radius: 8px;
+            color: #FFFFFF;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #4A7CFF;
+            box-shadow: 0 0 0 3px rgba(74, 124, 255, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #666;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #4A7CFF, #5CFFD7);
+            color: #0F0F14;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(74, 124, 255, 0.5);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .success-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .success-message h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #5CFFD7;
+        }
+
+        .success-message p {
+            color: #D3D3D9;
+            line-height: 1.6;
+        }
+
+        /* Demo Button Pulse */
+        @keyframes pulse-btn {
+            0%, 100% { box-shadow: 0 4px 20px rgba(74, 124, 255, 0.3); }
+            50% { box-shadow: 0 4px 30px rgba(74, 124, 255, 0.6); }
+        }
+
+        .btn-demo {
+            animation: pulse-btn 2s ease-in-out infinite;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             h1 { font-size: 40px; }
@@ -410,6 +570,7 @@
             .btn { width: 100%; text-align: center; }
             .hero { padding: 60px 0; }
             section { padding: 60px 0; }
+            .modal-content { margin: 10% auto; width: 95%; }
         }
     </style>
 </head>
@@ -423,8 +584,8 @@
                     <div class="tagline">Every Asset You Need. Found in a Second.</div>
                 </div>
                 <div class="header-buttons">
-                    <a href="#" class="btn btn-primary">Start Searching Free</a>
-                    <a href="#" class="btn btn-secondary">Watch Demo</a>
+                    <button class="btn btn-primary btn-demo" onclick="openModal()">Start Searching Free</button>
+                    <button class="btn btn-secondary" onclick="openModal()">Watch Demo</button>
                 </div>
             </div>
         </div>
@@ -438,7 +599,7 @@
                 <p class="sub-headline">
                     Per Second Assets is the world's first intelligent search engine that finds and unifies every type of design asset from across the web—in one place. Get perfect PNGs, vectors, PSDs, and more, delivered in seconds.
                 </p>
-                <a href="#" class="btn btn-primary" style="font-size: 18px; padding: 16px 40px;">Find Your First Asset</a>
+                <button class="btn btn-primary btn-demo" onclick="openModal()" style="font-size: 18px; padding: 16px 40px;">Find Your First Asset</button>
                 
                 <div class="hero-image">
                     <div class="search-preview">
@@ -568,7 +729,7 @@
                 <p class="sub-headline">
                     Join the thousands of designers who have stopped searching and started creating. Find your perfect asset in seconds.
                 </p>
-                <a href="#" class="btn btn-primary" style="font-size: 18px; padding: 16px 40px;">Get Started - It's Free</a>
+                <button class="btn btn-primary btn-demo" onclick="openModal()" style="font-size: 18px; padding: 16px 40px;">Get Started - It's Free</button>
                 <p class="reassurance">No credit card required. Explore thousands of free assets instantly.</p>
             </div>
         </div>
@@ -580,5 +741,116 @@
             <p>&copy; 2024 Per Second Assets. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Waitlist Modal -->
+    <div id="waitlistModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h3>Join the Waitlist</h3>
+                <p>Be the first to access Per Second Assets</p>
+            </div>
+            <div class="modal-body">
+                <form id="waitlistForm" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Your Role</label>
+                        <input type="text" id="role" name="role" placeholder="e.g., UI Designer, Graphic Designer" required>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">Join Waitlist</button>
+                </form>
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">✨</div>
+                    <h3>You're on the list!</h3>
+                    <p>We'll notify you as soon as Per Second Assets launches. Get ready to revolutionize your design workflow!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('waitlistModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('waitlistModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Reset form after closing
+            setTimeout(() => {
+                document.getElementById('waitlistForm').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+                document.getElementById('waitlistForm').reset();
+            }, 300);
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('waitlistModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const form = document.getElementById('waitlistForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                role: document.getElementById('role').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Joining...';
+            
+            // Simulate API call (replace with your actual API endpoint)
+            setTimeout(() => {
+                // Log to console (in production, send to your backend)
+                console.log('Waitlist submission:', formData);
+                
+                // Show success message
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                // Store in localStorage for demo purposes
+                let waitlist = JSON.parse(localStorage.getItem('waitlist') || '[]');
+                waitlist.push(formData);
+                localStorage.setItem('waitlist', JSON.stringify(waitlist));
+                
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Join Waitlist';
+                
+                // Auto close after 3 seconds
+                setTimeout(() => {
+                    closeModal();
+                }, 3000);
+            }, 1000);
+        }
+
+        // Keyboard accessibility
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
